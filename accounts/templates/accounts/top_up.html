@@ -1,0 +1,22 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>How much do you want to top up your account?</h5>
+			<hr>
+            <form action="{% url 'topup' %}">
+	            <textarea cols="20" rows="1" name="topupvalue"></textarea>
+	            <br />
+	            <input type="submit" value="Top Up €!" />
+            </form>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

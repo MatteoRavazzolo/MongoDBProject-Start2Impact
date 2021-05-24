@@ -1,0 +1,65 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{%  include 'accounts/status.html' %}
+
+<br>
+<div class="row">
+	<div class="col-md-7">
+		<h5>ALL ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+
+					<th>Customer</th>
+					<th>Product</th>
+					<th>BTC Value</th>
+					<th>EUR Value</th>
+					<th>Buying or Selling</th>
+					<th>Status</th>
+
+				</tr>
+
+				{% for order in orders %}
+					<tr>
+						<td>{{ order.customer }}</td>
+						<td>{{ order.product }}</td>
+						<td>{{ order.btc_value }}</td>
+						<td>{{ order.eur_value }}</td>
+						<td>{{ order.sellingorbuying }}</td>
+						<td>{{ order.status }}</td>
+					</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-2">
+		<h5>ALL CUSTOMERS</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				{% for customer in customers %}
+					<tr>
+						<td>{{ customer.name }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-3">
+		<h5>WANNA BUY OR SELL BTC?</h5>
+		<td><a class="btn btn-sm btn-info" href="{% url 'profile' customer_id %}">New Order</a></td>
+		<hr>
+		<h5>DO YOU NEED TO TOP UP YOUR ACCOUNT WITH EUROS?</h5>
+		<td><a class="btn btn-sm btn-info" href="{% url 'top_up' customer_id %}">Top Up</a></td>
+	</div>
+
+</div>
+
+{% endblock %}
